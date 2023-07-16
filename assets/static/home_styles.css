@@ -1,0 +1,119 @@
+.home {
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    display: flex;
+
+}
+
+.nav-logo{
+    width: 100%;
+    height: 72px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 100px;
+}
+
+.logo{
+    width: 100%;
+    height: 72px;
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 40%;
+    align-self: stretch;
+    align-items: center;
+}
+
+.logo-group{
+    display: flex;
+}
+
+.logo-title{
+    padding-left: 8px;
+    color: #000;
+    font-family: Jost;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+.logo-image{
+    width: 60px;
+    height: 57px;
+    flex-shrink: 0; 
+}
+
+.header-links{
+    width: 100%;
+    height: 72px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-nav{
+    width: 100%;
+    display: block;
+}
+
+.lemma{
+    width: 30%;
+    display: flex;
+    height: 72px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 100px;
+
+    color: #000;
+    font-family: Jost;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: normal; 
+    }
+
+.nav-links{
+    width: 100%;
+    display: flex;
+    height: 72px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.about{
+    color: #000;
+    font-family: Jost;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
+.history{
+    color: #000;
+    font-family: Jost;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
+.text{
+    color: #000;
+    font-family: Jost;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
+.documentation{
+    color: #000;
+    font-family: Jost;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
