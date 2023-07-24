@@ -13,7 +13,7 @@
     <header class="home">
         <div class="nav-logo">
             <div class="logo">
-                <a class="logo-group" href="">
+                <a class="logo-group" href="{{ url_for('main') }}">
                     <img class="logo-image" src="{{ url_for('assets', path='images/quotation-mark.png') }}" />
                     <div class="logo-title">Word Wizards</div>
                 </a>
@@ -23,7 +23,7 @@
                     <ul class="nav-links">
                         <li class="about"><a href="/"><span>About</span></a></li>
                         <li class="history"><a href="/"><span>History</span></a></li>
-                        <li class="text"><a href="/"><span>Action</span></a></li>
+                        <li class="text"><a href="{{ url_for('from_text') }}"><span>Action</span></a></li>
                         <li class="documentation"><a href="/"><span>Documentation</span></a></li>
                     </ul> 
                 </nav>
@@ -31,7 +31,7 @@
         </div>
         <div class="lemma">Unleashing the Power of NLP</div>
     </header>
-    <div class="page-wrap">{% block content %}{% endblock %}</div>
+    <div class="page-content">{% block content %}{% endblock %}</div>
     <footer>
 
     </footer>
