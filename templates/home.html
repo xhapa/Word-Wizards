@@ -13,7 +13,7 @@
     <header class="home">
         <div class="nav-logo">
             <div class="logo">
-                <a class="logo-group" href="{{ url_for('main') }}">
+                <a class="logo-group" href="{{ url_for('home') }}">
                     <img class="logo-image" src="{{ url_for('assets', path='images/quotation-mark.png') }}" />
                     <div class="logo-title">Word Wizards</div>
                 </a>
@@ -21,10 +21,10 @@
             <div class="header-links">
                 <nav class="main-nav">
                     <ul class="nav-links">
-                        <li class="about"><a href="/"><span>About</span></a></li>
-                        <li class="history"><a href="/"><span>History</span></a></li>
+                        <li class="about"><a href="{{ url_for('about') }}"><span>About</span></a></li>
+                        <li class="history"><a href="{{ url_for('history') }}"><span>History</span></a></li>
                         <li class="text"><a href="{{ url_for('from_text') }}"><span>Action</span></a></li>
-                        <li class="documentation"><a href="/"><span>Documentation</span></a></li>
+                        <li class="documentation"><a href="{{ url_for('doc') }}"><span>Documentation</span></a></li>
                     </ul> 
                 </nav>
             </div>
