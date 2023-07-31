@@ -14,6 +14,10 @@ from fastapi.staticfiles import StaticFiles
 # Config
 from config.db import create_db_and_tables
 
+# Router
+from routers.from_file import file_router
+from routers.from_text import text_router
+
 app = FastAPI()
 app.title = 'Word Wizards'
 app.version = '0.0.1'
@@ -26,6 +30,10 @@ templates = Jinja2Templates(directory='../templates')
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
+
+# Routers
+app.include_router(file_router)
+app.include_router(text_router)
 
 # Home page
 @app.get('/', response_class=HTMLResponse, response_model=None, status_code=200, tags=["Home"])
@@ -43,10 +51,6 @@ async def doc(request: Request):
 @app.get('/history', response_class=HTMLResponse, response_model=None, status_code=200, tags=["Home"])
 async def history(request: Request):
     return templates.TemplateResponse('home.html', {'request': request})
-
-@app.get('/text', response_class=HTMLResponse, response_model=None, status_code=200, tags=["Home"])
-async def from_text(request: Request):
-    return templates.TemplateResponse('from_text.html', {'request': request})
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0",
