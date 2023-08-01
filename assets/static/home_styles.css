@@ -146,8 +146,20 @@
 }
 
 .main-nav-menu{
-    width: 100%;
+    width: 60%;
     display: block;
+    padding-right: 70px;
+}
+
+.content-main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+    padding-left: 100px;
 }
 
 .input-container {
