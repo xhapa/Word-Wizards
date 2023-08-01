@@ -145,6 +145,11 @@
     padding-left: 100px;
 }
 
+.main-nav-menu{
+    width: 100%;
+    display: block;
+}
+
 .input-container {
     position: relative;
     display: flex;
