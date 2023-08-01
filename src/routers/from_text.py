@@ -28,4 +28,4 @@ async def analyze_it(
         )
     ] = None
 )-> Jinja2Templates:
-    return templates.TemplateResponse('from_text.html', {'request': request})
+    return templates.TemplateResponse('analyze_menu.html', {'request': request})
