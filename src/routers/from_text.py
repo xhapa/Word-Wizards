@@ -20,7 +20,7 @@ async def from_text(request: Request)-> Jinja2Templates:
 @text_router.post('/analyze', response_class=HTMLResponse, response_model=None, status_code=200,)
 async def analyze_it(
     request: Request,
-    text : Annotated[
+    textarea : Annotated[
         str, 
         Form(
             title= 'Text',
