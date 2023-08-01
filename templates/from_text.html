@@ -6,6 +6,11 @@
             <h1 class="titles">Analyze text from the prompt</h1>
             <p></p>
         </div>
+        <form method="post" action="/text/analyze">
+            <label for="text">Enter a category name to disable:</label><br>
+            <input type="text" id="text" name="text">
+            <input class="submit" type="submit" value="Analyze it">
+        </form>
     </section>
 </main>
 {% endblock %}

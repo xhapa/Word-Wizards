@@ -11,5 +11,5 @@ file_router.mount("/assets", StaticFiles(directory="../assets"), name="assets")
 templates = Jinja2Templates(directory='../templates')
 
 @file_router.get('/', response_class=HTMLResponse, response_model=None, status_code=200,)
-async def from_file(request: Request):
+async def from_file(request: Request)-> Jinja2Templates:
     return templates.TemplateResponse('home.html', {'request': request})
