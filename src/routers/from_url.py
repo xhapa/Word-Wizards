@@ -11,4 +11,4 @@ templates = Jinja2Templates(directory='../templates')
 
 @url_router.get('/', response_class=HTMLResponse, response_model=None, status_code=200,)
 async def from_url(request: Request)-> Jinja2Templates:
-    return templates.TemplateResponse('from_text.html', {'request': request})
+    return templates.TemplateResponse('from_url.html', {'request': request})

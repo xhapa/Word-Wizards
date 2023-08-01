@@ -3,14 +3,14 @@
 <main>
     <section>
         <div class="content">
-            <h1 class="titles">Analyze text from the prompt</h1>
+            <h1 class="titles">Analyze text of a web page from a URL</h1>
             <p></p>
         </div>
         <div class="content">
-            <form method="post" action="/text/analyze">
+            <form method="post" action="/url/analyze">
                 <div class="input-container">
-                    <label for="textarea" style="top: 20%">Type it</label><br>
-                    <textarea id="textarea" name="textarea"></textarea>
+                    <label for="text">Send a URL</label><br>
+                    <input type="text" id="text" name="text"><br>
                     <input class="submit" type="submit" value="Analyze it">
                 </div>
             </form>

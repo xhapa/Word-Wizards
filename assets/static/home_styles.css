@@ -121,8 +121,8 @@
     width: 100%;
     height: 100%;
     background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
 }
 
 .titles{
@@ -135,9 +135,117 @@
 }
 
 .content{
-    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 100px;
+    justify-content: center;
+    padding-top: 50px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container input[type="text"] {
+    width: 715px;
+    height: 45px;
+    flex-shrink: 0; 
+    padding: 10px; /* Adjust padding as needed */
+    flex: 1; /* Expand the input to fill the available space */
+    border-radius: 10px;
+    border: 1px solid rgba(34, 49, 39, 0.60);
+    background: #D9D9D9;
+}
+
+.input-container textarea {
+    width: 715px;
+    height: 168px; 
+    flex-shrink: 0; 
+    padding: 10px; /* Adjust padding as needed */
+    flex: 1; /* Expand the input to fill the available space */
+    border-radius: 10px;
+    border: 1px solid rgba(34, 49, 39, 0.60);
+    background: #D9D9D9;
+}
+
+.input-container input[type="file"]{
+    color: transparent;
+    width: 715px;
+    height: 168px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 49, 39, 0.60);
+    background: #D9D9D9;
+}
+
+.input-container input[type="file"]::file-selector-button {
+    position: absolute;
+    width: 190px;
+    height: 64px;
+    top: 10%;
+    left: 29%;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #5AB1BB;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+
+    color: #FFF;
+    font-family: Jost;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+.input-container  input[type="file"]::file-selector-button:hover {
+    background: #0d45a5;
+  }
+  
+
+.input-container label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    padding-top: 20px;
+    padding-right: 31px;
+    padding-bottom: 20px;
+    padding-left: 31px;
+    pointer-events: none; /* Prevent the label from intercepting mouse events */
+    transform: translateY(-50%); /* Center the label vertically using translateY */
+    transition: transform 0.3s ease-out; /* Optional: Add a smooth transition */
+
+    color: rgba(0, 0, 0, 0.50);
+    font-family: Jost;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
+.input-container input[type="submit"]{
+    width: 190px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(127, 7, 153, 0.60);
+    background: #7F0799;
+
+    color: #FFF;
+    font-family: Jost;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.input-container input[type="text"]:focus + label {
+    transform: translateY(-100%) scale(0.8); /* Move the label up and scale it down when the input is focused */
+    color: #000; /* Change the color of the label when the input is focused */
 }

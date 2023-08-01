@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('assets', path='static/home_styles.css') }}" rel="stylesheet">
+    <link href="{{ url_for('assets', path='static/home_styles.css?v=1') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet"> 
@@ -23,7 +23,13 @@
                     <ul class="nav-links">
                         <li class="about"><a href="{{ url_for('about') }}"><span>About</span></a></li>
                         <li class="history"><a href="{{ url_for('history') }}"><span>History</span></a></li>
-                        <li class="text"><a href="{{ url_for('from_text') }}"><span>Action</span></a></li>
+                        <li class="text"><a href="#">Action&dtrif;</a>
+                            <ul class="dropdown">
+                                <li><a href="{{ url_for('from_text') }}">Your text</a></li>
+                                <li><a href="{{ url_for('from_url') }}">Your URL</a></li>
+                                <li><a href="{{ url_for('from_file') }}">Your file</a></li>
+                            </ul>
+                        </li>
                         <li class="documentation"><a href="{{ url_for('doc') }}"><span>Documentation</span></a></li>
                     </ul> 
                 </nav>

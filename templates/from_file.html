@@ -3,14 +3,15 @@
 <main>
     <section>
         <div class="content">
-            <h1 class="titles">Analyze text from the prompt</h1>
+            <h1 class="titles">Analyze text from a file</h1>
             <p></p>
         </div>
         <div class="content">
-            <form method="post" action="/text/analyze">
+            <form method="post" action="/file/analyze">
                 <div class="input-container">
-                    <label for="textarea" style="top: 20%">Type it</label><br>
-                    <textarea id="textarea" name="textarea"></textarea>
+                    <label for="file" style="top:65%; left: 35%;">Or</label><br>
+                    <label for="file" style="top:80%; left: 32%;">Drag a file</label><br>
+                    <input type="file" id="file" name="file">
                     <input class="submit" type="submit" value="Analyze it">
                 </div>
             </form>
