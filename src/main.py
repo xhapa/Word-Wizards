@@ -19,6 +19,9 @@ from routers.from_file import file_router
 from routers.from_text import text_router
 from routers.from_url import url_router
 
+# NLP
+from nlp.pipeline_downloader import pipeline_downloader
+
 app = FastAPI()
 app.title = 'Word Wizards'
 app.version = '0.0.1'
@@ -31,6 +34,7 @@ templates = Jinja2Templates(directory='../templates')
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
+    pipeline_downloader()
 
 # Routers
 app.include_router(file_router)
