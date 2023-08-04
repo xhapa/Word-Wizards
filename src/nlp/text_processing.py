@@ -1,4 +1,5 @@
 # Spacy
+from typing import Any
 import spacy
 import pytextrank
 
@@ -12,8 +13,9 @@ class TextProcessing():
         self.text = text
         self.__lang = detect(self.text)
         self.tokens = []
-        self.tags = []
+        self.pos = []
         self.lemmas = []
+        self.summary = ''
     
     @property
     def lang_detection(self):
@@ -48,7 +50,7 @@ class TextProcessing():
         threshold = 1
         for token in self.doc:
             if (not token.is_stop) and (len(token.text)> threshold):
-                yield token.lemma_ 
+                yield token.lemma_
 
     def ner(self):
         for ent in self.doc.ents:
@@ -60,13 +62,18 @@ class TextProcessing():
 
     def summarizer(self):
         for sent in self.doc._.textrank.summary(limit_phrases=3, limit_sentences=3):
-            print(sent)
+            self.summary += sent
+
+    def __getattr__(self, name):
+        if name == 'json_dict':
+            return {'text': self.text, 'lang': self.lang_detection,'tokens':self.tokens,'word_count': self.word_count, 'pos': self.pos,
+           'entities':[], 'lemma':self.lemmas, 'keywords': self.keywords, 'summary':self.summary}
 
     async def get_preprocessing(self):
         await self.nlp_pipeline_selector()
         self.remove_double_spaces()
         self.tokens = list(self.tokenization())
-        self.tags = list(self.tagging())
+        self.pos = list(self.tagging())
         self.lemmas = list(self.remove_stopwords_lemmatizer())
         self.keywords = list(self.get_keywords())
         self.words_counter()

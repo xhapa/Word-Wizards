@@ -1,3 +1,7 @@
+ul {
+    list-style: none;
+}
+
 .home {
     width: 100%;
     height: 80px;
@@ -27,6 +31,8 @@
 
 .logo-group{
     display: flex;
+    text-decoration: none;
+    color: #000;
 }
 
 .logo-title{
@@ -65,7 +71,7 @@
     justify-content: space-around;
     padding: 10px 100px;
 
-    color: #000;
+    color: #7F0799;
     font-family: Jost;
     font-size: 24px;
     font-style: italic;
@@ -100,7 +106,7 @@
 }
 
 .text{
-    color: #000;
+    color: #5AB1BB;
     font-family: Jost;
     font-size: 18px;
     font-style: normal;
@@ -265,4 +271,14 @@
 .input-container input[type="text"]:focus + label {
     transform: translateY(-100%) scale(0.8); /* Move the label up and scale it down when the input is focused */
     color: #000; /* Change the color of the label when the input is focused */
+}
+
+.nav-ref {
+    text-decoration: none;
+    color: #000;
+}
+
+.analy-links {
+    text-decoration: none;
+    color: #5AB1BB; /* Replace #007bff with the desired color in hexadecimal or any other valid CSS color format */
 }

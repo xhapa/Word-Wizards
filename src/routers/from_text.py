@@ -7,8 +7,11 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-# NLP
-from nlp.text_processing import TextProcessing
+# Config
+from config.db import engine, Session
+
+# Services
+from services.nlp_data import NLPDataService
 
 text_router = APIRouter(prefix='/text', tags=['Text'])
 
@@ -31,6 +34,6 @@ async def analyze_it(
         )
     ] = None
 )-> Jinja2Templates:
-    nlp_prepro = TextProcessing(textarea)
-    await nlp_prepro.get_preprocessing()
+    db = Session(engine)
+    await NLPDataService(db).create_nlp_data(text=textarea)
     return templates.TemplateResponse('analyze_menu.html', {'request': request})
