@@ -1,0 +1,10 @@
+{% extends "analyze_menu.html" %}
+{% block display %}
+<ul class="display-items">
+    {% for item in entities %}
+        <li>
+            <label class="display-text-large">{{ item[0] }}:</label> <span class="display-text-large">{{ item[1] }}</span>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

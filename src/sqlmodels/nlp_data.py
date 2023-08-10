@@ -5,7 +5,7 @@ from typing import Optional, List, Tuple
 from sqlalchemy import Column, JSON
 
 # SQLModel
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, select
 
 class NLPData(SQLModel, table=True):
     nlp_data_id: Optional[int] = Field(default=None, primary_key=True)
@@ -18,3 +18,9 @@ class NLPData(SQLModel, table=True):
     lemma: List[str] = Field(index=True, sa_column=Column(JSON))
     keywords: List[str] = Field(index=True, sa_column=Column(JSON))
     summary: str = Field(index=True)
+
+    class Config:
+        schema_extra = {
+            "example": {
+            }
+        }

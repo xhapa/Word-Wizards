@@ -2,10 +2,7 @@
 from nlp.text_processing import TextProcessing
 
 # SQLModels
-from sqlmodels.nlp_data import NLPData
-
-example = {'id':'112331','text': 'Hellooo how are you', 'lang': 'en','tokens':['Hello'],'word_count': '144', 'pos': ['(Hello, PRON)'],
-           'entities':['Hello'], 'lemma':['Hell'], 'keywords': ['Hello'], 'summary':'Hello'}
+from sqlmodels.nlp_data import NLPData, select
 
 class NLPDataService():
     def __init__(self, db) -> None:
@@ -15,10 +12,14 @@ class NLPDataService():
         try:
             nlp_prepro = TextProcessing(text)
             await nlp_prepro.get_preprocessing()
+            await nlp_prepro.get_processing()
             new_prepro = NLPData(**nlp_prepro.json_dict)
             self.db.add(new_prepro)
-            self.db.commit()  # Use an asynchronous commit if supported
+            self.db.commit()
         except Exception as e:
-            # Handle the error appropriately (e.g., log the error, raise it, etc.)
             print(f"Error while creating NLP data: {e}")
             self.db.rollback() 
+    
+    def get_last_nlp_data(self):
+        latest_item = self.db.exec(select(NLPData).order_by(-NLPData.nlp_data_id).limit(1)).first()
+        return latest_item

@@ -4,18 +4,19 @@
     <section>
         <div class="content">
             <h1 class="titles">Extract relevant information</h1>
-            <p></p>
+            <p class="lang"> Language : {{ lang }} </p>
         </div>
         <div class="content-main">
             <div class="main-nav-menu">
                 <ul class="nav-links">
-                    <li class="text"><a class="analy-links" href="#"><span>Word Count</span></a></li>
-                    <li class="text"><a class="analy-links" href="#"><span>Entities</span></a></li>
-                    <li class="text"><a class="analy-links" href="#"><span>Keywords</span></a></li>
+                    <li class="text"><a class="analy-links" href="{{ url_for('words_count') }}"><span>Word Count</span></a></li>
+                    <li class="text"><a class="analy-links" href="{{ url_for('entities') }}"><span>Entities</span></a></li>
+                    <li class="text"><a class="analy-links" href="{{ url_for('keywords') }}"><span>Keywords</span></a></li>
                     <li class="text"><a class="analy-links" href="#"><span>Sentiment</span></a></li>
-                    <li class="text"><a class="analy-links" href="#"><span>Summarize</span></a></li>
+                    <li class="text"><a class="analy-links" href="{{ url_for('summarize') }}"><span>Summarize</span></a></li>
                 </ul>
             </div>
+            <div class="main-display" >{% block display %} {% endblock %}</div>
         </div>
     </section>
 </main>

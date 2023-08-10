@@ -140,14 +140,24 @@ ul {
     line-height: normal; 
 }
 
+.lang{
+    color: #000;
+    font-family: Jost;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal; 
+}
+
 .content{
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     padding-top: 50px;
     padding-right: 100px;
-    padding-bottom: 50px;
+    padding-bottom: 15px;
     padding-left: 100px;
 }
 
@@ -157,10 +167,26 @@ ul {
     padding-right: 70px;
 }
 
+.main-display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+
+    width: 715px;
+    height: 168px; 
+    flex-shrink: 0; 
+    flex: 1; /* Expand the input to fill the available space */
+    border-radius: 10px;
+    border: 1px solid rgba(34, 49, 39, 0.60);
+    background: #D9D9D9;
+}
+
 .content-main{
     height: 100%;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
     padding-top: 20px;
     padding-right: 100px;
@@ -281,4 +307,29 @@ ul {
 .analy-links {
     text-decoration: none;
     color: #5AB1BB; /* Replace #007bff with the desired color in hexadecimal or any other valid CSS color format */
+}
+
+.display-text{
+    color: #000;
+    font-family: Jost;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.display-text-large{
+    color: #000;
+    font-family: Jost;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal; 
+}
+
+ul.display-items{
+    list-style: none;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }

@@ -15,6 +15,7 @@ class TextProcessing():
         self.tokens = []
         self.pos = []
         self.lemmas = []
+        self.entities = []
         self.summary = ''
     
     @property
@@ -54,20 +55,20 @@ class TextProcessing():
 
     def ner(self):
         for ent in self.doc.ents:
-            yield (ent.text,ent.label_)
+            yield (ent.text.lower(),ent.label_)
 
     def get_keywords(self):
         for phrase in self.doc._.phrases[:10]:
-            yield phrase.text
+            yield phrase.text.capitalize()
 
     def summarizer(self):
         for sent in self.doc._.textrank.summary(limit_phrases=3, limit_sentences=3):
-            self.summary += sent
+            self.summary += str(sent)
 
     def __getattr__(self, name):
         if name == 'json_dict':
             return {'text': self.text, 'lang': self.lang_detection,'tokens':self.tokens,'word_count': self.word_count, 'pos': self.pos,
-           'entities':[], 'lemma':self.lemmas, 'keywords': self.keywords, 'summary':self.summary}
+           'entities':self.entities, 'lemma':self.lemmas, 'keywords': self.keywords, 'summary':self.summary}
 
     async def get_preprocessing(self):
         await self.nlp_pipeline_selector()
@@ -75,5 +76,9 @@ class TextProcessing():
         self.tokens = list(self.tokenization())
         self.pos = list(self.tagging())
         self.lemmas = list(self.remove_stopwords_lemmatizer())
-        self.keywords = list(self.get_keywords())
+
+    async def get_processing(self):
         self.words_counter()
+        self.entities = list(map(lambda x : (x[0].title(), x[1]),list(set(self.ner()))))
+        self.keywords = list(self.get_keywords())
+        self.summarizer()

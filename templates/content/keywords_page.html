@@ -1,0 +1,10 @@
+{% extends "analyze_menu.html" %}
+{% block display %}
+<ul class="display-items">
+    {% for item in keywords %}
+        <li>
+            <label class="display-text-large">{{ item }}</label>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
