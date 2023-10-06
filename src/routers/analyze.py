@@ -29,70 +29,101 @@ async def analyze_it(
         = Depends(get_session)
 )-> Jinja2Templates:
     text = request.cookies.get("text_data")
-    await NLPDataService(db).create_nlp_data(text=text)
-    lang = NLPDataService(db).get_last_nlp_data().lang
-    return templates.TemplateResponse('analyze_menu.html', {'request': request, 'lang':lang})
+    id_data = request.cookies.get("id_data")
+    if id_data == 'None':
+        await NLPDataService(db).create_nlp_data(text=text)
+        last_data = NLPDataService(db).get_last_nlp_data()
+        nlp_id = last_data.nlp_data_id
+        lang = last_data.lang   
+    else:
+        # Handle the case where id_data is an integer
+        try:
+            nlp_data = NLPDataService(db).get_by_id_nlp_data(int(id_data))
+            lang = nlp_data.lang
+            nlp_id = nlp_data.nlp_data_id
+        except ValueError:
+            # Handle the case where id_data is not a valid integer
+            # You may want to log or handle this error appropriately
+            lang = "default_lang"
+            nlp_id = None
 
-@analyze_route.get('/words-count', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
+    # Convert None to a default value (e.g., an empty string)
+    nlp_id = nlp_id or ""
+
+    return templates.TemplateResponse('analyze_menu.html', {'request': request, 'lang': lang, 'nlp_id': nlp_id})
+
+@analyze_route.get('/words-count/{nlp_data_id}', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
 async def words_count(
+    nlp_data_id : int,
     request: Request,
     db : Session 
         = Depends(get_session)
 )-> Jinja2Templates:
-    last_data = NLPDataService(db).get_last_nlp_data()
-    count = last_data.word_count
-    lang = last_data.lang
+    nlp_data = NLPDataService(db).get_by_id_nlp_data(int(nlp_data_id))
+    lang = nlp_data.lang
+    nlp_id = nlp_data.nlp_data_id
+    count = nlp_data.word_count
     return templates.TemplateResponse('./content/words_count_page.html',
                                       {
                                         'request': request,
                                         'count':count,
-                                        'lang':lang
+                                        'lang':lang,
+                                        'nlp_id': nlp_id
                                         })
 
-@analyze_route.get('/entities', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
+@analyze_route.get('/entities/{nlp_data_id}', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
 async def entities(
+    nlp_data_id : int,
     request: Request,
     db : Session
         = Depends(get_session)
 )-> Jinja2Templates:
-    last_data = NLPDataService(db).get_last_nlp_data()
-    ent = last_data.entities
-    lang = last_data.lang
+    nlp_data = NLPDataService(db).get_by_id_nlp_data(int(nlp_data_id))
+    nlp_id = nlp_data.nlp_data_id
+    ent = nlp_data.entities
+    lang = nlp_data.lang
     return templates.TemplateResponse('./content/entities_page.html', 
                                       {
                                         'request': request, 
                                         'entities':ent, 
-                                        'lang':lang
+                                        'lang':lang,
+                                        'nlp_id': nlp_id
                                         })
 
-@analyze_route.get('/keywords', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
+@analyze_route.get('/keywords/{nlp_data_id}', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
 async def keywords(
+    nlp_data_id : int,
     request: Request,
     db : Session
         = Depends(get_session)
 )-> Jinja2Templates:
-    last_data = NLPDataService(db).get_last_nlp_data()
-    key = last_data.keywords
-    lang = last_data.lang
+    nlp_data = NLPDataService(db).get_by_id_nlp_data(int(nlp_data_id))
+    nlp_id = nlp_data.nlp_data_id
+    key = nlp_data.keywords
+    lang = nlp_data.lang
     return templates.TemplateResponse('./content/keywords_page.html', 
                                       {
                                           'request': request, 
                                           'keywords':key, 
-                                          'lang':lang
+                                          'lang':lang,
+                                          'nlp_id': nlp_id
                                           })
 
-@analyze_route.get('/summary', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
+@analyze_route.get('/summary/{nlp_data_id}', response_class=HTMLResponse, response_model=NLPData, status_code=200,)
 async def summarize(
+    nlp_data_id : int,
     request: Request,
     db : Session 
         = Depends(get_session)
 )-> Jinja2Templates:
-    last_data = NLPDataService(db).get_last_nlp_data()
-    summ = last_data.summary
-    lang = last_data.lang
+    nlp_data = NLPDataService(db).get_by_id_nlp_data(int(nlp_data_id))
+    nlp_id = nlp_data.nlp_data_id
+    summ = nlp_data.summary
+    lang = nlp_data.lang
     return templates.TemplateResponse('./content/summary_page.html', 
                                       {
                                           'request': request, 
                                           'summary':summ, 
-                                          'lang':lang
+                                          'lang':lang,
+                                          'nlp_id': nlp_id
                                        })

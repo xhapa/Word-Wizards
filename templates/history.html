@@ -9,7 +9,7 @@
         <div class="content">
             <table class="table mb-4">
                 <thead>
-                    <tr>
+                    <tr class="text_cont">
                       <th scope="col">No.</th>
                       <th scope="col">Text</th>
                       <th scope="col">Words</th>
@@ -19,13 +19,13 @@
                 <tbody>
                     {% for nlp in nlp_list %}
                     <tr>
-                      <th scope="row">{{ nlp.nlp_data_id }}</th>
-                      <td><a href="{{ url_for('to_analyze', nlp_data_id = nlp.nlp_data_id ) }}">{{ nlp.text[:60] }}...</a></td>
-                      <td>{{ nlp.word_count }}</td>
-                      <td>
+                      <th scope="row" class="text_cont">{{ nlp.nlp_data_id }}</th>
+                      <td class="text_cont"><a href="{{ url_for('to_analyze', nlp_data_id = nlp.nlp_data_id ) }}">{{ nlp.text[:60] }}...</a></td>
+                      <td class="text_cont">{{ nlp.word_count }}</td>
+                      <td class="text_cont">
                         <form action="{{ url_for('update_text', nlp_data_id = nlp.nlp_data_id ) }}" method="post" id="updateText">
                             <textarea id="text" name="text_up"></textarea>
-                            <input type="submit" value="Update"></form>
+                            <input class="text_cont" type="submit" value="Update"></form>
                         <a class="btn btn-danger ms-1" href="/history/delete/{{ nlp.nlp_data_id }}">Delete</a>
                       </td>
                     </tr>

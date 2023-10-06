@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('assets', path='static/home_styles.css?v=1') }}" rel="stylesheet"> 
+    <link href="{{ url_for('assets', path='static/home_styles.css') }}" rel="stylesheet"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet"> 
@@ -30,7 +30,7 @@
                                 <li><a class="nav-ref" href="{{ url_for('from_file') }}">Your file</a></li>
                             </ul>
                         </li>
-                        <li class="documentation"><a class="nav-ref" href="{{ url_for('doc') }}"><span>Documentation</span></a></li>
+                        <li class="documentation"><a class="nav-ref" href="{{ url_for('doc') }} " target="_blank"><span>Documentation</span></a></li>
                     </ul> 
                 </nav>
             </div>

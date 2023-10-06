@@ -40,5 +40,6 @@ async def submit(
 )-> Jinja2Templates:
     url = analyze_route.url_path_for('analyze_it')
     response = RedirectResponse(url=url, status_code=status.HTTP_302_FOUND)
-    response.set_cookie(key="text_data", value=textarea)
+    response.set_cookie(key="text_data", value=textarea.encode("utf-8"))
+    response.set_cookie(key="id_data", value=None)
     return response

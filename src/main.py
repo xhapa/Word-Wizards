@@ -70,9 +70,11 @@ async def to_analyze(nlp_data_id : int,
     ):
     nlp_data = NLPDataService(db).get_by_id_nlp_data(nlp_data_id)
     text = nlp_data.text
+    id_data = nlp_data.nlp_data_id
     url = analyze_route.url_path_for('analyze_it')
     response = RedirectResponse(url=url, status_code=status.HTTP_302_FOUND)
-    response.set_cookie(key="text_data", value=text)
+    response.set_cookie(key="text_data", value=text.encode("utf-8"))
+    response.set_cookie(key="id_data", value=id_data)
     return response
 
 @app.post('/history/update/{nlp_data_id}', response_class=HTMLResponse, response_model=None, status_code=200, tags=["Home"])
