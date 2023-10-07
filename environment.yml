@@ -1,8 +1,10 @@
 name: nlp-API
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - python
-  - fastapi=0.100.1
+  - fastapi
   - jupyter
+  - uvicorn
 prefix: /home/xhapa/anaconda3/envs/nlp-API
