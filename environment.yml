@@ -1,0 +1,8 @@
+name: nlp-API
+channels:
+  - defaults
+dependencies:
+  - python
+  - fastapi
+  - jupyter
+prefix: /home/xhapa/anaconda3/envs/nlp-API
