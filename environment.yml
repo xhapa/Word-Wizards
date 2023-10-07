@@ -3,6 +3,6 @@ channels:
   - defaults
 dependencies:
   - python
-  - fastapi
+  - fastapi=0.100.1
   - jupyter
 prefix: /home/xhapa/anaconda3/envs/nlp-API
