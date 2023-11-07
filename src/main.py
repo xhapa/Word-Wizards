@@ -15,9 +15,7 @@ from fastapi.staticfiles import StaticFiles
 from config.db import engine, Session, create_db_and_tables, get_session
 
 # Router
-from routers.from_file import file_router
 from routers.from_text import text_router
-from routers.from_url import url_router
 from routers.analyze import analyze_route
 
 # NLP
@@ -41,9 +39,7 @@ def on_startup():
     pipeline_downloader()
 
 # Routers
-app.include_router(file_router)
 app.include_router(text_router)
-app.include_router(url_router)
 app.include_router(analyze_route)
 
 # Home page

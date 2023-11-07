@@ -23,13 +23,7 @@
                     <ul class="nav-links">
                         <li class="about"><a class="nav-ref" href="{{ url_for('about') }}"><span>About</span></a></li>
                         <li class="history"><a class="nav-ref" href="{{ url_for('history') }}"><span>History</span></a></li>
-                        <li class="text"><a class="nav-ref" href="#">Action&dtrif;</a>
-                            <ul class="dropdown">
-                                <li><a class="nav-ref" href="{{ url_for('from_text') }}">Your text</a></li>
-                                <li><a class="nav-ref" href="{{ url_for('from_url') }}">Your URL</a></li>
-                                <li><a class="nav-ref" href="{{ url_for('from_file') }}">Your file</a></li>
-                            </ul>
-                        </li>
+                        <li class="text"><a class="nav-ref" href="{{ url_for('from_text') }}"><span>Your text</span></a></li>
                         <li class="documentation"><a class="nav-ref" href="{{ url_for('doc') }} " target="_blank"><span>Documentation</span></a></li>
                     </ul> 
                 </nav>

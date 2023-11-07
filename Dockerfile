@@ -15,8 +15,8 @@ RUN echo "source activate $(head -1 environment.yml | cut -d' ' -f2)" > ~/.bashr
 ENV PATH /opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
 SHELL ["/bin/bash", "--login", "-c"]
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy the contents of the src directory into the container at /app
+COPY ./src /app
 
 # Make port 80 available to the world outside this container
 EXPOSE 5000
