@@ -1,25 +1,20 @@
-# Use an official Miniconda3 image as a parent image
-FROM continuumio/miniconda3
+# Use an official Python runtime as a parent image
+FROM python:3.9
 
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy the conda environment file
-COPY environment.yml /app/environment.yml
+# Copy the current directory contents into the container at /app
+ADD . /app
 
-# Create the conda environment
-RUN conda env create -f environment.yml
-
-# Activate the conda environment
-RUN echo "source activate $(head -1 environment.yml | cut -d' ' -f2)" > ~/.bashrc
-ENV PATH /opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
-SHELL ["/bin/bash", "--login", "-c"]
-
-# Copy the contents of the src directory into the container at /app
-COPY ./src /app
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 80 available to the world outside this container
-EXPOSE 5000
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
 
 # Run app.py when the container launches
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]

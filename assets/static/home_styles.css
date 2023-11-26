@@ -2,11 +2,23 @@ ul {
     list-style: none;
 }
 
+body {
+    background-image: url('../images/Background.PNG');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
 .home {
     width: 100%;
     height: 80px;
     background-color: #FFFFFF;
     display: flex;
+    border-radius: 25px;
 }
 
 .nav-logo{
@@ -124,9 +136,11 @@ ul {
 }
 
 .page-content{
-    width: 100%;
+    width: 70%;
     height: 100%;
     background-color: #FFFFFF;
+    border-radius: 25px;
+    margin-top: 100px;
     /* display: flex;
     align-items: center; */
 }
@@ -155,7 +169,19 @@ ul {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 50px;
+    padding-top: 20px;
+    padding-right: 100px;
+    padding-bottom: 15px;
+    padding-left: 100px;
+}
+
+.content-title{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 30px;
     padding-right: 100px;
     padding-bottom: 15px;
     padding-left: 100px;
@@ -190,7 +216,7 @@ ul {
     justify-content: center;
     padding-top: 20px;
     padding-right: 100px;
-    padding-bottom: 20px;
+    padding-bottom: 80px;
     padding-left: 100px;
 }
 
@@ -198,65 +224,10 @@ ul {
     position: relative;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
+    padding-bottom: 100px;
 }
-
-.input-container input[type="text"] {
-    width: 715px;
-    height: 45px;
-    flex-shrink: 0; 
-    padding: 10px; /* Adjust padding as needed */
-    flex: 1; /* Expand the input to fill the available space */
-    border-radius: 10px;
-    border: 1px solid rgba(34, 49, 39, 0.60);
-    background: #D9D9D9;
-}
-
-.input-container textarea {
-    width: 715px;
-    height: 168px; 
-    flex-shrink: 0; 
-    padding: 10px; /* Adjust padding as needed */
-    flex: 1; /* Expand the input to fill the available space */
-    border-radius: 10px;
-    border: 1px solid rgba(34, 49, 39, 0.60);
-    background: #D9D9D9;
-}
-
-.input-container input[type="file"]{
-    color: transparent;
-    width: 715px;
-    height: 168px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    border: 1px solid rgba(34, 49, 39, 0.60);
-    background: #D9D9D9;
-}
-
-.input-container input[type="file"]::file-selector-button {
-    position: absolute;
-    width: 190px;
-    height: 64px;
-    top: 10%;
-    left: 29%;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: #5AB1BB;
-    cursor: pointer;
-    transition: background .2s ease-in-out;
-
-    color: #FFF;
-    font-family: Jost;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-  
-.input-container  input[type="file"]::file-selector-button:hover {
-    background: #0d45a5;
-  }
-  
 
 .input-container label {
     position: absolute;
@@ -278,7 +249,18 @@ ul {
     line-height: normal; 
 }
 
-.input-container input[type="submit"]{
+.input-container textarea {
+    width: 700px; /* Set the width as a percentage or specific value */
+    height: 150px; /* Set the desired height */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 49, 39, 0.60);
+    background: #D9D9D9;
+    margin-bottom: 10px; /* Add margin to separate from the button */
+}
+
+.input-container input[type="submit"] {
     width: 190px;
     height: 64px;
     flex-shrink: 0;
@@ -292,12 +274,9 @@ ul {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    margin-top: 10px; /* Add margin to separate from the textarea */
 }
 
-.input-container input[type="text"]:focus + label {
-    transform: translateY(-100%) scale(0.8); /* Move the label up and scale it down when the input is focused */
-    color: #000; /* Change the color of the label when the input is focused */
-}
 
 .nav-ref {
     text-decoration: none;
