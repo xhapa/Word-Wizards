@@ -1,3 +1,4 @@
+![alt text](./assets/images/Background.PNG)
 # Word Wizards
 
 Word Wizards is a FastAPI-based web application for Natural Language Processing (NLP) analysis. It allows users to input text, analyze it using NLP, and view the analysis history.
@@ -44,11 +45,16 @@ Open your web browser and go to http://localhost:8000 to access Word Wizards.
 
 ### Analyze Text
 
-```/history/{nlp_data_id}```: Redirects to the NLP analysis page for a specific text based on the nlp_data_id.
+```/history/{nlp_data_id}```: Redirects to the NLP analysis page for a specific text based on the nlp_data_id. [Analyze Doc](./src/READMEan.md)
 
 ### Update Text
 
 ```/history/update/{nlp_data_id}```: Updates the text associated with a specific NLP analysis identified by nlp_data_id.
+
+### NLP analysis & Text router
+
+* [NLP Doc](./src/READMEnlp.md)
+* [Text Doc](./src/READMEte.md)
 
 ## Project Structure
 
